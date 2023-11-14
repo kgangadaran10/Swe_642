@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "8a468e05-d9af-40c8-8dfe-fa1c8d7cc091",
+		"name": "Spring Boot Class Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12539774"
+	},
+	"item": [
+		{
+			"name": "New Survey Response",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200 on successful creation\", function () {",
+							"    pm.response.to.have(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\",\n    \"lastName\": \"{{$randomLastName}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/survey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Survey Response Required Field",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"{{$randomFirstName}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/survey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Responses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/survey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Response by Id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/survey/{{random_survey_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey",
+						"{{random_survey_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Survey Response",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/survey/{{random_survey_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey",
+						"{{random_survey_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Surveys",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/survey",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"survey"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"let surveyIDs = [];",
+					"",
+					"pm.sendRequest(\"http://localhost:8080/survey\", function (err, response) {",
+					"    if (err) {",
+					"        console.error(err);",
+					"        return;",
+					"    }",
+					"    const data = response.json().data;",
+					"    data.forEach((survey) => {",
+					"        if (survey.id) {",
+					"            surveyIDs.push(survey.id);",
+					"        }",
+					"    });",
+					"    const randomChoice = Math.floor(Math.random() * surveyIDs.length);",
+					"    console.log({randomChoice});",
+					"    console.log(\"Choosing survey\", surveyIDs[randomChoice]);",
+					"    pm.collectionVariables.set(\"random_survey_id\", surveyIDs[randomChoice]);",
+					"});"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "random_survey_id",
+			"value": ""
+		}
+	]
+}

@@ -1,3 +1,8 @@
+/*
+ * Contributors:
+ * - Josh Marsden
+ */
+
 package swe642.hw3.webserver.api;
 
 import org.glassfish.jersey.server.ResourceConfig;

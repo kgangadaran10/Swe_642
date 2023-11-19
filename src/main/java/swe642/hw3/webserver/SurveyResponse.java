@@ -1,3 +1,8 @@
+/*
+ * Contributors:
+ * - Josh Marsden
+ */
+
 package swe642.hw3.webserver;
 
 import java.util.Date;
@@ -29,5 +34,25 @@ public class SurveyResponse {
 
     @Enumerated(EnumType.STRING)
     private Recommendation recommendation;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
 }

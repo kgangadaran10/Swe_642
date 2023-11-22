@@ -11,29 +11,29 @@
         }
       },
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "src/ui",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/survey-app",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
+            "outputPath": "src/main/resources/static",
+            "index": "src/ui/index.html",
+            "browser": "src/ui/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/ui/favicon.ico",
+              "src/ui/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/ui/styles.scss"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
+            "server": "src/ui/main.server.ts",
             "prerender": true,
             "ssr": {
               "entry": "server.ts"
@@ -91,11 +91,11 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/ui/favicon.ico",
+              "src/ui/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/ui/styles.scss"
             ],
             "scripts": []
           }

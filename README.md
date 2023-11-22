@@ -1,6 +1,11 @@
-# Swe_642_hw3
+# SWE 642 Homework 3
 
-Spring boot application for swe 642 hw3
+Spring boot application with an Angular User Interface (UI) for SWE 642 homework 3.
+
+> Contributors:
+>
+> - Josh Marsden
+> - Lubna Fatima
 
 ## Dependencies
 
@@ -47,25 +52,35 @@ mvn spring-boot:run
 The default port is 8080, so you can visit http://localhost:8080 and you will see an
 ugly page with a 404 error because the webserver hasn't been configured to run anything
 yet.
-# SurveyApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+---
+
+# Angular App
+
+Generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+
+## Prerequisites
+
+- Install node version 18
+  > Consider using [nvm](https://github.com/nvm-sh/nvm) to manage multiple versions of node.
+  > You can install the expected node version via nvm with `nvm install` which will read from
+  > the .nvmrc file located in this repo.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` or `npm run start` for a dev server. Navigate to http://localhost:4200/. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component within the `src/ui/app/` directory. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`. Generated components get their own directory with the same name in which all four generated files are located.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` or `npm run build` to build the project. The build artifacts will be stored in the `src/main/resources/static/` directory.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` or `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 

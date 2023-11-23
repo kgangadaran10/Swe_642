@@ -1,6 +1,13 @@
+/**
+ * Contributors:
+ * - Josh Marsden
+ * - Lubna Fatima
+ */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SurveyFormComponent } from './survey-form.component';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 
 describe('SurveyFormComponent', () => {
   let component: SurveyFormComponent;
@@ -8,7 +15,11 @@ describe('SurveyFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SurveyFormComponent]
+      imports: [HttpClientModule, SurveyFormComponent],
+      providers: [
+        provideHttpClient(withFetch()),
+        {provide: 'baseUrl', useValue: 'http://localhost:8080/survey'},
+      ],
     })
     .compileComponents();
     

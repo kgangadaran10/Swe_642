@@ -1,3 +1,8 @@
+/**
+ * Contributors:
+ * - Lubna Fatima
+ */
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LubnaFatimaComponent } from './lubna-fatima.component';

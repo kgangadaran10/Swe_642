@@ -1,0 +1,50 @@
+<!--
+Contributors:
+- Josh Marsden
+-->
+
+<div class="container py-5">
+
+  <h2>MS Degree Programs</h2>
+
+  <ul class="list-group col-4">
+    @for (program of programs; track program.title) {
+      <li class="list-group-item list-group-item-action">
+        <a class="text-success"
+          [href]="program.url"
+          target="_blank">
+          {{ program.title }}
+        </a>
+      </li>
+    }
+  </ul>
+
+  <div class="row mt-5">
+
+    @for (program of programs; track program.title) {
+      <div class="col-4 card">
+        <div class="card-body">
+          <h6 class="card-title">{{ program.title }} Requirements</h6>
+          <table class="table table-striped card-text">
+            <thead>
+              <tr>
+                <th>Course Number</th>
+                <th>Course Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (course of program.requirements; track course.number) {
+                <tr>
+                  <td>{{ course.number }}</td>
+                  <td>{{ course.name }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+
+  </div>
+
+</div>

@@ -22,7 +22,27 @@ export interface SurveyResponse {
   surveyDate: Date
   additionalComments?: string
 }
+export enum LikesAbtCampus{
+  STUDENTS,
+  LOCATION,
+  CAMPUS,
+  ATMOSPHERE,
+  DORMROOMS,
+  SPORTS
+}
 
+export enum HearAbtCampus{
+  FRIENDS,
+  TELEVISION,
+  INTERNET,
+  OTHERS
+}
+
+export enum Recommend{
+  VERYLIKELY,
+  LIKELY,
+  UNLIKELY
+}
 interface ResponseData<T> {
   success: boolean
   data: T

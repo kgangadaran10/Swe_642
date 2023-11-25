@@ -1,0 +1,56 @@
+h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+
+.alert {
+    text-align: right;
+    color: red
+}
+
+.hide{
+    display: none!important;
+}
+.show{
+    display: contents!important;
+}
+
+.alert-success{
+    color: #0f5132!important;
+    position: fixed;
+    width: 30%;
+    left: 30%;
+    top: 50%;
+    margin: 2em;
+
+}
+
+form {
+    background-color: white;
+    max-width: 600px;
+    margin: 50px auto;
+    box-sizing: border-box;
+    box-shadow: 2px 5px 10px steelblue;
+    text-align: center;
+    position: relative;
+}
+
+.title {
+    text-align: left;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.title label{
+    font-weight: bold;
+}
+
+.submit,.cancel{
+    background-color: #333;
+    color: white;
+    margin-bottom: 10px;
+}
+.cancel{
+    margin-left:1em;
+}
+

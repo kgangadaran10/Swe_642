@@ -1,56 +1,97 @@
-h1 {
-    text-align: center;
-    font-size: 50px;
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
 }
 
+.form-group {
+    margin-bottom: 15px;
+}
 
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* ensures padding doesn't affect overall width */
+}
+
+textarea {
+    resize: vertical; /* allows vertical resizing */
+}
+
+/* Alert Styles */
 .alert {
-    text-align: right;
-    color: red
+    color: red;
+    font-size: 0.85em;
 }
 
-.hide{
-    display: none!important;
-}
-.show{
-    display: contents!important;
-}
-
-.alert-success{
-    color: #0f5132!important;
-    position: fixed;
-    width: 30%;
-    left: 30%;
-    top: 50%;
-    margin: 2em;
-
+/* Button Styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-form {
-    background-color: white;
-    max-width: 600px;
-    margin: 50px auto;
-    box-sizing: border-box;
-    box-shadow: 2px 5px 10px steelblue;
-    text-align: center;
-    position: relative;
-}
-
-.title {
-    text-align: left;
-    padding: 10px;
-    margin-bottom: 30px;
-}
-.title label{
-    font-weight: bold;
-}
-
-.submit,.cancel{
-    background-color: #333;
+.btn.submit {
+    background-color: #4CAF50;
     color: white;
-    margin-bottom: 10px;
-}
-.cancel{
-    margin-left:1em;
 }
 
+.btn.cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Success Message Styles */
+#alertS {
+    display: none; /* hidden by default */
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+}
+
+/* Show the success message when necessary */
+.show-success #alertS {
+    display: block;
+}
+
+/* Checkbox and Radio Button Styles */
+[type="checkbox"],
+[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Custom Select Dropdown */
+.custom-select {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+}
+
+/* Adjustments for Mobile View */
+@media (max-width: 768px) {
+    .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,45 @@
+<p>Survey list works!</p>
+<div class="table-responsive">
+    <table class="table table-bordered align-middle">
+        <thead class="table-success">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Street Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <th>Telephone Number</th>
+                <th>Email</th>
+                <th>Date Of Survey</th>
+                <th>Liked Most About Campus</th>
+                <th>How Did You Hear About Us?</th>
+                <th>Recommend</th>
+                <th>Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (s of surveyList; track $index) {
+               <tr>
+                    <td>{{ s.firstName }}</td>
+                    <td>{{ s.lastName }}</td>
+                    <td>{{ s.streetAddress }}</td>
+                    <td>{{ s.city }}</td>
+                    <td>{{ s.state }}</td>
+                    <td>{{ s.zip }}</td>
+                    <td>{{ s.phone }}</td>
+                    <td>{{ s.email }}</td>
+                    <td>{{ s.surveyDate | date: 'shortDate' }}</td>
+                    <td>
+                        <span *ngFor="let like of s.likes; let i = index">{{ like }}<span *ngIf="i < s.likes.length - 1">, </span></span>
+                    </td>
+                    <td>{{ s.reference }}</td>
+                    <td>{{ s.recommendationLikelihood }}</td>
+                    <td>{{ s.additionalComments }}</td>
+                    </tr>
+
+            }
+           
+        </tbody>
+    </table>
+</div>

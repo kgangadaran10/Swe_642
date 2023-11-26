@@ -1,9 +1,17 @@
-import java.util.Date;
+/**
+ * Contributors:
+ * - Josh Marsden
+ * - Gangadaran Kameswaran
+ */
+
+package swe642.hw3.webserver;
+
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
@@ -49,8 +57,11 @@ public class SurveyResponse {
     @Column(name = "likelihood_of_recommendation", nullable = false)
     private int likelihoodOfRecommendation;
 
+    @Column(name = "additional_comment", length = 500, nullable = true)
+    private String additionalComment;
+
     @Temporal(TemporalType.DATE)
-    private Date surveyDate;
+    private Instant surveyDate;
 
     // Getters and setters...
 
@@ -146,14 +157,6 @@ public class SurveyResponse {
         this.likelihoodOfRecommendation = likelihoodOfRecommendation;
     }
 
-    public Date getSurveyDate() {
-        return surveyDate;
-    }
-
-    public void setSurveyDate(Date surveyDate) {
-        this.surveyDate = surveyDate;
-    }
-
     public String getAdditionalComment() {
         return additionalComment;
     }
@@ -161,5 +164,13 @@ public class SurveyResponse {
     public void setAdditionalComment(String additionalComment) {
         this.additionalComment = additionalComment;
     }
-    
+
+    public Instant getSurveyDate() {
+        return surveyDate;
+    }
+
+    public void setSurveyDate(String surveyDate) {
+        this.surveyDate = Instant.from(ZonedDateTime.parse(surveyDate));
+    }
+
 }

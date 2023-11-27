@@ -57,7 +57,9 @@ public class SurveyResponseResource {
     public Response getAllResponses() {
         try {
             return Response.status(HttpStatus.OK.value())
-                    .entity(new ResponseMetadata<>(true, surveyService.getAllResponses())).build();
+                    .entity(new ResponseMetadata<>(true,
+                            surveyService.getAllResponses()))
+                    .build();
         } catch (Exception e) {
             System.out.println(e);
             return Response.status(HttpStatus.INTERNAL_SERVER_ERROR.value())

@@ -56,8 +56,8 @@ public class SurveyResponse {
     @Column(name = "likelihood_of_recommendation", nullable = false)
     private int recommendationLikelihood;
 
-    @Column(name = "additional_comment", length = 500, nullable = true)
-    private String additionalComment;
+    @Column(name = "additional_comments", length = 500, nullable = true)
+    private String additionalComments;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Instant surveyDate;
@@ -156,12 +156,12 @@ public class SurveyResponse {
         this.recommendationLikelihood = recommendationLikelihood;
     }
 
-    public String getAdditionalComment() {
-        return additionalComment;
+    public String getAdditionalComments() {
+        return additionalComments;
     }
 
-    public void setAdditionalComment(String additionalComment) {
-        this.additionalComment = additionalComment;
+    public void setAdditionalComments(String additionalComments) {
+        this.additionalComments = additionalComments;
     }
 
     public Instant getSurveyDate() {

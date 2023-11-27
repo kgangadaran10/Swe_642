@@ -1,12 +1,17 @@
+/**
+ * Contributors:
+ * - Josh Marsden
+ * - Lubna Fatima
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
-import { ReactiveFormsModule,FormBuilder, FormGroup,Validators,FormArray,FormControl,AbstractControl } from '@angular/forms'; 
+import { ReactiveFormsModule,FormBuilder, FormGroup,Validators,FormArray,FormControl } from '@angular/forms'; 
 import { SurveyResponsesService } from '../service/survey-responses.service';
 import { SurveyResponse } from '../service/survey-responses.service';
 import { Router } from '@angular/router';
-import { HearAbtCampus,LikesAbtCampus,Recommend
- } from '../service/survey-responses.service';
+import { LikesAbtCampus,Recommend } from '../service/survey-responses.service';
 
 
 @Component({
@@ -22,13 +27,14 @@ import { HearAbtCampus,LikesAbtCampus,Recommend
 
 
 export class SurveyFormComponent implements OnInit {
-//currSur:  SurveyResponse=new SurveyResponse();
-currSur: SurveyResponse;
+
+  currSur: SurveyResponse;
   likesAbt: Array<any> = [];
   recommend: Array<any> = [];
   isSubmitted: boolean = false;
-  surveyForm!: FormGroup; // Declare the surveyForm property here
   showSuccess: boolean = false; 
+  surveyForm!: FormGroup; // Declare the surveyForm property here
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -38,18 +44,19 @@ currSur: SurveyResponse;
     this.surveyForm = this.initializeForm();
   }
 
-ResponseData!: Observable<SurveyResponse[]>;
+  ResponseData!: Observable<SurveyResponse[]>;
+
   ngOnInit() {
     var $:any;
    Object.keys(LikesAbtCampus).filter((v) => isNaN(Number(v))).forEach(key => {
      this.likesAbt.push({ name: key, value: key.toLowerCase() })
    });
 
-
    Object.keys(Recommend).filter((v)=>isNaN(Number(v))).forEach(key => {
      this.recommend.push({ name: key, value: key.toLowerCase() })
    });
   }
+
   initializeSurveyResponse(): SurveyResponse {
     return {
       firstName: '',
@@ -95,14 +102,15 @@ ResponseData!: Observable<SurveyResponse[]>;
       this.recommend.push({ name: key, value: key.toLowerCase() });
     });
   }
+
   loadSurveyResponses() {
     this.ResponseData = this.surveyService.getAllResponses();
   }
 
   onChangeRecommend(e: any) {
     this.surveyForm.get('recommend')?.setValue(e.target.value);
-
   }
+
   onCheckBoxChange(e: any) {
     const likeArray: FormArray = this.surveyForm.get('likesArray') as FormArray;
     if (e.target.checked) {
@@ -118,51 +126,54 @@ ResponseData!: Observable<SurveyResponse[]>;
       });
     }
   }
+
   validateError(name: string) {
     return this.surveyForm.get(name)?.invalid && this.isSubmitted
   }
+
   refreshForm(){
     this.isSubmitted = false;
     for(let name in this.surveyForm.controls){
      this.surveyForm.controls[name].setErrors(null);
     }
     this.surveyForm.reset();
-   }
+    this.router.navigateByUrl('/home');
+  }
    
-   submit() {
-    this.isSubmitted = true;
-    if (this.surveyForm.valid) {
-      console.log("Form submission in progress");
+  submit() {
+  this.isSubmitted = true;
+  if (this.surveyForm.valid) {
+    console.log("Form submission in progress");
 
-      // Construct the SurveyResponse object from the form values
-      this.currSur = {
-        ...this.currSur,
-        firstName: this.surveyForm.get("firstName")?.value,
-        lastName: this.surveyForm.get("lastName")?.value,
-        streetAddress: this.surveyForm.get("streetAddress")?.value,
-        city: this.surveyForm.get("city")?.value,
-        state: this.surveyForm.get("state")?.value,
-        zip: this.surveyForm.get("zip")?.value,
-        phone: this.surveyForm.get("telNum")?.value,
-        email: this.surveyForm.get("email")?.value,
-        likes: this.surveyForm.get('likesArray')?.value || [],
-        reference: this.surveyForm.get('hearAbtCampus')?.value,
-        recommendationLikelihood: parseInt(this.surveyForm.get('recommend')?.value),
-        surveyDate: new Date(this.surveyForm.get("date")?.value),
-        additionalComments: this.surveyForm.get("comments")?.value
-      };
+    // Construct the SurveyResponse object from the form values
+    this.currSur = {
+      ...this.currSur,
+      firstName: this.surveyForm.get("firstName")?.value,
+      lastName: this.surveyForm.get("lastName")?.value,
+      streetAddress: this.surveyForm.get("streetAddress")?.value,
+      city: this.surveyForm.get("city")?.value,
+      state: this.surveyForm.get("state")?.value,
+      zip: this.surveyForm.get("zip")?.value,
+      phone: this.surveyForm.get("telNum")?.value,
+      email: this.surveyForm.get("email")?.value,
+      likes: this.surveyForm.get('likesArray')?.value || [],
+      reference: this.surveyForm.get('hearAbtCampus')?.value,
+      recommendationLikelihood: parseInt(this.surveyForm.get('recommend')?.value),
+      surveyDate: new Date(this.surveyForm.get("date")?.value),
+      additionalComments: this.surveyForm.get("comments")?.value
+    };
 
-      this.surveyService.addResponse(this.currSur).subscribe(res => {
-        console.log({res});
-        this.showSuccess = true;
-        this.refreshForm();
-        setTimeout(() => {
-          this.showSuccess = false;
-        }, 3000);
-      });
-    } else {
-      console.log("Form is not valid");
-    }
+    this.surveyService.addResponse(this.currSur).subscribe(res => {
+      console.log({res});
+      this.showSuccess = true;
+      this.refreshForm();
+      setTimeout(() => {
+        this.showSuccess = false;
+      }, 3000);
+    });
+  } else {
+    console.log("Form is not valid");
+  }
 }
 
 

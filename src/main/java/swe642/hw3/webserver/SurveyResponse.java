@@ -51,10 +51,10 @@ public class SurveyResponse {
     private String likes;
 
     @Column(name = "source_of_interest", length = 100, nullable = false, unique = false)
-    private String sourceOfInterest;
+    private String reference;
 
     @Column(name = "likelihood_of_recommendation", nullable = false)
-    private int likelihoodOfRecommendation;
+    private int recommendationLikelihood;
 
     @Column(name = "additional_comment", length = 500, nullable = true)
     private String additionalComment;
@@ -132,28 +132,28 @@ public class SurveyResponse {
         this.email = email;
     }
 
-    public String getLikes() {
-        return likes;
+    public String[] getLikes() {
+        return likes.split("[,]");
     }
 
-    public void setLikes(String likes) {
-        this.likes = likes;
+    public void setLikes(String[] likes) {
+        this.likes = String.join(",", likes);
     }
 
-    public String getSourceOfInterest() {
-        return sourceOfInterest;
+    public String getReference() {
+        return reference;
     }
 
-    public void setSourceOfInterest(String sourceOfInterest) {
-        this.sourceOfInterest = sourceOfInterest;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
-    public int getLikelihoodOfRecommendation() {
-        return likelihoodOfRecommendation;
+    public int getRecommendationLikelihood() {
+        return recommendationLikelihood;
     }
 
-    public void setLikelihoodOfRecommendation(int likelihoodOfRecommendation) {
-        this.likelihoodOfRecommendation = likelihoodOfRecommendation;
+    public void setRecommendationLikelihood(int recommendationLikelihood) {
+        this.recommendationLikelihood = recommendationLikelihood;
     }
 
     public String getAdditionalComment() {

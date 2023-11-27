@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './programs.component.scss'
 })
 export class ProgramsComponent {
-
+   // Array of program objects containing program details
   programs = [
     {
       title: 'Computational Science, MS',

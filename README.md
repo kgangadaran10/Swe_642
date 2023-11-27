@@ -6,6 +6,7 @@ Spring boot application with an Angular User Interface (UI) for SWE 642 homework
 >
 > - Josh Marsden
 > - Lubna Fatima
+> - Gangadaran Kameswaran
 
 ## Dependencies
 

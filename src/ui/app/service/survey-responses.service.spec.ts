@@ -1,6 +1,7 @@
 /**
  * Contributors:
  * - Josh Marsden
+ * - Gangadaran Kameswaran
  */
 
 import { TestBed } from '@angular/core/testing';
@@ -15,14 +16,18 @@ describe('SurveyResponsesService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       providers: [
+        // Configuring the TestBed with necessary modules and dependencies
         provideHttpClient(withFetch()),
-        {provide: 'baseUrl', useValue: 'http://localhost:8080/survey'},
+        { provide: 'baseUrl', useValue: 'http://localhost:8080/survey' },
       ],
     });
+    
+    // Creating an instance of the SurveyResponsesService
     service = TestBed.inject(SurveyResponsesService);
   });
 
   it('should be created', () => {
+    // Verifying that the service instance is created successfully
     expect(service).toBeTruthy();
   });
 });

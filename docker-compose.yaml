@@ -1,18 +1,21 @@
 # Contributors:
 # - Josh Marsden
+# - Gangadaran Kameswaran
 
+# Define Docker Compose services
 services:
+  # PostgreSQL service configuration
   postgres:
-    image: postgres:16
+    image: postgres:16  # Use PostgreSQL version 16 image
     ports:
-      - 5432:5432
+      - 5432:5432  # Map host port 5432 to container port 5432
     volumes:
-      - psql-data:/var/lib/postgresql/data
+      - psql-data:/var/lib/postgresql/data  # Mount volume for persistent data storage
     environment:
-      - POSTGRES_DB=swe642
-      - POSTGRES_USER=swe642
-      - POSTGRES_PASSWORD=hw3
+      - POSTGRES_DB=swe642  # Set PostgreSQL database name
+      - POSTGRES_USER=swe642  # Set PostgreSQL username
+      - POSTGRES_PASSWORD=hw3  # Set PostgreSQL password
 
-
+# Define Docker Compose volumes
 volumes:
-  psql-data:
+  psql-data:  # Define named volume for PostgreSQL data storage

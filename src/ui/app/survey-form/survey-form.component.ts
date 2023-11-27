@@ -163,18 +163,18 @@ export class SurveyFormComponent implements OnInit {
       additionalComments: this.surveyForm.get("comments")?.value
     };
 
-    this.surveyService.addResponse(this.currSur).subscribe(res => {
-      console.log({res});
-      this.showSuccess = true;
-      this.refreshForm();
+      this.surveyService.addResponse(this.currSur).subscribe(res => {
+        console.log({res});
+        this.showSuccess = true;
+        this.refreshForm();
         console.log("Form submitted");
-      setTimeout(() => {
-        this.showSuccess = false;
-      }, 3000);
-    });
-  } else {
-    console.log("Form is not valid");
-  }
+        setTimeout(() => {
+          this.showSuccess = false;
+        }, 3000);
+      });
+    } else {
+      console.log("Form is not valid");
+    }
 }
 
 

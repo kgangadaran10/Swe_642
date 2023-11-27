@@ -167,6 +167,7 @@ export class SurveyFormComponent implements OnInit {
       console.log({res});
       this.showSuccess = true;
       this.refreshForm();
+        console.log("Form submitted");
       setTimeout(() => {
         this.showSuccess = false;
       }, 3000);
@@ -183,29 +184,4 @@ export class SurveyFormComponent implements OnInit {
 }
  
 
-  /*addDummyResponse() {
-    const dummyResponse = {
-      firstName: 'Bob',
-      lastName: 'Ross',
-      streetAddress: '123 Abc Rd',
-      city: 'Paintington',
-      state: 'VA',
-      zip: '12345',
-      phone: '123-456-7890',
-      email: '',
-      likes: [],
-      reference: '',
-      recommendationLikelihood: 1,
-      surveyDate: new Date(),
-    };
-
-    this.surveyService.addResponse(dummyResponse).subscribe({
-      next: (res) => {
-        console.log('Response added', res);
-      },
-      error: (err) => {
-        console.error('Error adding response', err);
-      }
-    });
-  }*/
-
+  

@@ -60,7 +60,7 @@ public class SurveyResponse {
     @Column(name = "additional_comment", length = 500, nullable = true)
     private String additionalComment;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Instant surveyDate;
 
     // Getters and setters...

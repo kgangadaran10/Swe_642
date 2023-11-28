@@ -7,7 +7,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProgramsComponent } from './programs.component';
-
+// Component decorator defining metadata for the component
 describe('ProgramsComponent', () => {
   let component: ProgramsComponent;
   let fixture: ComponentFixture<ProgramsComponent>;

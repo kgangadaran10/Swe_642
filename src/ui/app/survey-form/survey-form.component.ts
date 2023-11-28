@@ -137,7 +137,7 @@ export class SurveyFormComponent implements OnInit {
      this.surveyForm.controls[name].setErrors(null);
     }
     this.surveyForm.reset();
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/submit');
   }
    
   submit() {

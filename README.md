@@ -1,4 +1,4 @@
-# SWE 642 Homework 3
+# SWE 642
 
 Spring boot application with an Angular User Interface (UI) for SWE 642 homework 3.
 
